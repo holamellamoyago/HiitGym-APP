@@ -19,13 +19,13 @@ List<IconData> navIcons2 = [
 
 List<GestureDetector> navIcons = [
   GestureDetector(
-    child: Icon(Icons.home_outlined),
+    child: const Icon(Icons.home_outlined),
   ),
   GestureDetector(
-    child: Icon(Icons.camera_alt_outlined),
+    child: const Icon(Icons.camera_alt_outlined),
   ),
   GestureDetector(
-    child: Icon(Icons.person_2_outlined),
+    child: const Icon(Icons.person_2_outlined),
   ),
 ];
 
@@ -59,7 +59,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   // Se utilizan los snapshots para traer datos varias veces , con el GET solo tendriamos que cambiar el stream por un future.
                   const Expanded(child: _List()),
                   Text(prefs.isAdmin.toString()),
-                  bottomBar()
+                  GestureDetector(
+                    onTap: () async {
+                      FirebaseAuth.instance.signOut();
+                      context.go('/login_screen');
+                      prefs.ultimaPagina = '/tutorial_screen';
+                    },
+                    child: const Text('Desconectarse'),
+                  ),
+                  // bottomBar()
                 ],
               ),
             ),
@@ -89,9 +97,7 @@ Widget bottomBar() {
 }
 
 class _HomeScreenCards extends StatelessWidget {
-  const _HomeScreenCards({
-    super.key,
-  });
+  const _HomeScreenCards();
 
   @override
   Widget build(BuildContext context) {
@@ -135,10 +141,8 @@ class HeaderHomeScreen extends StatelessWidget {
         ],
       ),
       FutureBuilder(
-        future: FirebaseFirestore.instance
-            .collection('User')
-            .doc(user?.uid)
-            .get(),
+        future:
+            FirebaseFirestore.instance.collection('User').doc(user?.uid).get(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const CircularProgressIndicator();
@@ -157,12 +161,11 @@ class HeaderHomeScreen extends StatelessWidget {
       ),
     ]);
   }
+
 }
 
 class _List extends StatelessWidget {
-  const _List({
-    super.key,
-  });
+  const _List();
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:newhiitgymfirebase2/configure/firestore/firestore_service.dart';
+import 'package:newhiitgymfirebase2/configure/router/app_router.dart';
+import 'package:newhiitgymfirebase2/presentation/util/snackbar.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
 class Rutina5Dias extends StatefulWidget {
@@ -489,94 +492,96 @@ class _Rutina5DiasState extends State<Rutina5Dias> {
                                           cardsCount: 5,
                                         ),
                                       ),
-                                      BottomAppBar(
-                                        child: Text('hhola'),
-                                      ),
-                                      OutlinedButton(
-                                        onPressed: () {
-                                          dia1Titulo1Controller.text =
-                                              rutinaData?['Dia1_Titulo1'];
-                                          dia2Titulo1Controller.text =
-                                              rutinaData?['Dia2_Titulo1'];
-                                          dia3Titulo1Controller.text =
-                                              rutinaData?['Dia3_Titulo1'];
-                                          dia4Titulo1Controller.text =
-                                              rutinaData?['Dia4_Titulo1'];
-                                          dia5Titulo1Controller.text =
-                                              rutinaData?['Dia5_Titulo1'];
-
-                                          dia1Titulo2Controller.text =
-                                              rutinaData?['Dia1_Titulo2'];
-                                          dia1Ejercicio1Controller.text =
-                                              rutinaData?['Dia1_Ejercicio1'];
-                                          dia1Ejercicio2Controller.text =
-                                              rutinaData?['Dia1_Ejercicio2'];
-                                          dia1Ejercicio3Controller.text =
-                                              rutinaData?['Dia1_Ejercicio3'];
-                                          dia1Ejercicio4Controller.text =
-                                              rutinaData?['Dia1_Ejercicio4'];
-                                          dia1Ejercicio5Controller.text =
-                                              rutinaData?['Dia1_Ejercicio5'];
-                                          dia1Ejercicio6Controller.text =
-                                              rutinaData?['Dia1_Ejercicio6'];
-                                          dia1Ejercicio7Controller.text =
-                                              rutinaData?['Dia1_Ejercicio7'];
-                                          dia1Ejercicio8Controller.text =
-                                              rutinaData?['Dia1_Ejercicio8'];
-
-                                          dia2Ejercicio1Controller.text =
-                                              rutinaData?['Dia2_Ejercicio1'];
-                                          dia2Ejercicio2Controller.text =
-                                              rutinaData?['Dia2_Ejercicio2'];
-                                          dia2Ejercicio3Controller.text =
-                                              rutinaData?['Dia2_Ejercicio3'];
-                                          dia2Ejercicio4Controller.text =
-                                              rutinaData?['Dia2_Ejercicio4'];
-                                          dia2Ejercicio5Controller.text =
-                                              rutinaData?['Dia2_Ejercicio5'];
-
-                                          dia3Ejercicio1Controller.text =
-                                              rutinaData?['Dia3_Ejercicio1'];
-                                          dia3Ejercicio2Controller.text =
-                                              rutinaData?['Dia3_Ejercicio2'];
-                                          dia3Ejercicio3Controller.text =
-                                              rutinaData?['Dia3_Ejercicio3'];
-                                          dia3Ejercicio4Controller.text =
-                                              rutinaData?['Dia3_Ejercicio4'];
-                                          dia3Ejercicio5Controller.text =
-                                              rutinaData?['Dia3_Ejercicio5'];
-
-                                          dia4Ejercicio1Controller.text =
-                                              rutinaData?['Dia4_Ejercicio1'];
-                                          dia4Ejercicio2Controller.text =
-                                              rutinaData?['Dia4_Ejercicio2'];
-                                          dia4Ejercicio3Controller.text =
-                                              rutinaData?['Dia4_Ejercicio3'];
-                                          dia4Ejercicio4Controller.text =
-                                              rutinaData?['Dia4_Ejercicio4'];
-                                          dia4Ejercicio5Controller.text =
-                                              rutinaData?['Dia4_Ejercicio5'];
-                                          dia4Ejercicio6Controller.text =
-                                              rutinaData?['Dia4_Ejercicio6'];
-                                          dia4Ejercicio7Controller.text =
-                                              rutinaData?['Dia4_Ejercicio7'];
-                                          dia4Ejercicio8Controller.text =
-                                              rutinaData?['Dia4_Ejercicio8'];
-
-                                          dia5Ejercicio1Controller.text =
-                                              rutinaData?['Dia5_Ejercicio1'];
-                                          dia5Ejercicio2Controller.text =
-                                              rutinaData?['Dia5_Ejercicio2'];
-                                          dia5Ejercicio3Controller.text =
-                                              rutinaData?['Dia5_Ejercicio3'];
-                                          dia5Ejercicio4Controller.text =
-                                              rutinaData?['Dia5_Ejercicio4'];
-                                          dia5Ejercicio5Controller.text =
-                                              rutinaData?['Dia5_Ejercicio5'];
-                                          editRutina('1');
-                                        },
-                                        child: const Text('Editar rutina'),
-                                      ),
+                                      prefs.isAdmin ? Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          OutlinedButton(
+                                            onPressed: () {
+                                              dia1Titulo1Controller.text =
+                                                  rutinaData?['Dia1_Titulo1'];
+                                              dia2Titulo1Controller.text =
+                                                  rutinaData?['Dia2_Titulo1'];
+                                              dia3Titulo1Controller.text =
+                                                  rutinaData?['Dia3_Titulo1'];
+                                              dia4Titulo1Controller.text =
+                                                  rutinaData?['Dia4_Titulo1'];
+                                              dia5Titulo1Controller.text =
+                                                  rutinaData?['Dia5_Titulo1'];
+                                          
+                                              dia1Titulo2Controller.text =
+                                                  rutinaData?['Dia1_Titulo2'];
+                                              dia1Ejercicio1Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio1'];
+                                              dia1Ejercicio2Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio2'];
+                                              dia1Ejercicio3Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio3'];
+                                              dia1Ejercicio4Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio4'];
+                                              dia1Ejercicio5Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio5'];
+                                              dia1Ejercicio6Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio6'];
+                                              dia1Ejercicio7Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio7'];
+                                              dia1Ejercicio8Controller.text =
+                                                  rutinaData?['Dia1_Ejercicio8'];
+                                          
+                                              dia2Ejercicio1Controller.text =
+                                                  rutinaData?['Dia2_Ejercicio1'];
+                                              dia2Ejercicio2Controller.text =
+                                                  rutinaData?['Dia2_Ejercicio2'];
+                                              dia2Ejercicio3Controller.text =
+                                                  rutinaData?['Dia2_Ejercicio3'];
+                                              dia2Ejercicio4Controller.text =
+                                                  rutinaData?['Dia2_Ejercicio4'];
+                                              dia2Ejercicio5Controller.text =
+                                                  rutinaData?['Dia2_Ejercicio5'];
+                                          
+                                              dia3Ejercicio1Controller.text =
+                                                  rutinaData?['Dia3_Ejercicio1'];
+                                              dia3Ejercicio2Controller.text =
+                                                  rutinaData?['Dia3_Ejercicio2'];
+                                              dia3Ejercicio3Controller.text =
+                                                  rutinaData?['Dia3_Ejercicio3'];
+                                              dia3Ejercicio4Controller.text =
+                                                  rutinaData?['Dia3_Ejercicio4'];
+                                              dia3Ejercicio5Controller.text =
+                                                  rutinaData?['Dia3_Ejercicio5'];
+                                          
+                                              dia4Ejercicio1Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio1'];
+                                              dia4Ejercicio2Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio2'];
+                                              dia4Ejercicio3Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio3'];
+                                              dia4Ejercicio4Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio4'];
+                                              dia4Ejercicio5Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio5'];
+                                              dia4Ejercicio6Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio6'];
+                                              dia4Ejercicio7Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio7'];
+                                              dia4Ejercicio8Controller.text =
+                                                  rutinaData?['Dia4_Ejercicio8'];
+                                          
+                                              dia5Ejercicio1Controller.text =
+                                                  rutinaData?['Dia5_Ejercicio1'];
+                                              dia5Ejercicio2Controller.text =
+                                                  rutinaData?['Dia5_Ejercicio2'];
+                                              dia5Ejercicio3Controller.text =
+                                                  rutinaData?['Dia5_Ejercicio3'];
+                                              dia5Ejercicio4Controller.text =
+                                                  rutinaData?['Dia5_Ejercicio4'];
+                                              dia5Ejercicio5Controller.text =
+                                                  rutinaData?['Dia5_Ejercicio5'];
+                                              editRutina('1');
+                                            },
+                                            child: const Text('Editar rutina'),
+                                          ),
+                                        ],
+                                      ) : const SizedBox()
                                     ],
                                   ),
                                 ),
@@ -631,9 +636,9 @@ class _Rutina5DiasState extends State<Rutina5Dias> {
           ),
         ),
       ),
-      
     );
   }
+
 
   Future editRutina(String id) => showDialog(
         context: context,

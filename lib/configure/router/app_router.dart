@@ -1,11 +1,9 @@
-import 'package:go_router/go_router.dart';
-import 'package:newhiitgymfirebase2/configure/preferences/pref_usuarios.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
 final prefs = PreferenciasUsuario();
 
 final appRouter = GoRouter(
-  initialLocation: '/tutorial_screen',
+  initialLocation: prefs.ultimaPagina,
   routes: [
     GoRoute(
         path: '/',

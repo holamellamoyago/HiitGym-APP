@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:newhiitgymfirebase2/presentation/util/snackbar.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
@@ -13,9 +15,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final FirebaseauthService _auth = FirebaseauthService();
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
+  @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
@@ -24,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -47,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       context.push('/register_screen');
                     },
-                    child: const Text('Registro')),
+                    child: const Text('Crear cuenta')),
                 FilledButton(
                     onPressed: () {
                       _sigIn();
@@ -55,19 +59,62 @@ class _LoginPageState extends State<LoginPage> {
                     child: const Text('Iniciar sesion')),
               ],
             ),
-            FilledButton(
-                onPressed: () async {
-                  try {
-                    final user = await _auth.loginGoogle();
-                    if (user != null) {
-                      context.go('/');
-                    }
-                  } on FirebaseAuthException catch (e) {
-                    print(e.message);
-                    // showSnackBar(context, e.message?? 'Algo salio mal');
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: 50,
+                  height: 2,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(100),
+                    ),
+                    color: colors.primary,
+                  ),
+                ),
+                const Text('O mejor inicia sesión como '),
+                Container(
+                  width: 50,
+                  height: 2,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(100),
+                    ),
+                    color: colors.primary,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () async {
+                try {
+                  final user = await _auth.loginGoogle();
+                  if (user != null) {
+                    _signInGoogle();
+                    context.go('/');
                   }
-                },
-                child: const Text('Google'))
+                } on FirebaseAuthException {
+                  return;
+                  // showSnackBar(context, e.message?? 'Algo salio mal');
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.all(40),
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(100),
+                    image: const DecorationImage(
+                        image: AssetImage('assets/google.png'))),
+              ),
+            ),
           ],
         )),
       ),
@@ -76,32 +123,28 @@ class _LoginPageState extends State<LoginPage> {
 
   void _sigIn() async {
     var prefs = PreferenciasUsuario();
-
-    final colors = Theme.of(context).colorScheme;
     String email = _emailController.text;
     String password = _passwordController.text;
 
     User? user = await _auth.sigInWithEmailAndPassword(email, password);
 
     if (user != null) {
-      print('El usuario inicio sesion correctamente');
       context.push('/');
       prefs.ultimaPagina = '/';
       prefs.ultimouid = user.uid;
       showSnackBar(context, 'Inicio sesion correctamente');
     } else {
-      print('No consiguio iniciar sesion');
       showSnackBar(context, 'Error de contraseña o mail ');
     }
   }
 
-  void _SignInGoogle() async {
+  void _signInGoogle() async {
     var prefs = PreferenciasUsuario();
     User? user = FirebaseAuth.instance.currentUser;
     final username = user?.displayName;
     final uid = user?.uid;
-    final password = 'No hay contrrasna';
-    final subscription = 'Tarifa basica';
+    const password = 'No hay contrrasna';
+    const subscription = 'Tarifa basica';
     final email = user?.email;
 
     if (user != null) {
@@ -110,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
       prefs.ultimaPagina = '/';
 
       FirebaseFirestore.instance.collection('User').doc(uid).set({
-        'admin': false,
+        'admin': true,
         'username': username,
         'password': password,
         'subscription': subscription,

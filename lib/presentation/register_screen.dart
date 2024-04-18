@@ -32,36 +32,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const ImagenLogo(),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
-              Column(
-                children: [
-                  const Text(
-                    'Registro',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
-                  UsernameTextField(usernameController: _usernameController),
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
-                  EmailTextField(emailController: _emailController),
-                  const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
-                  PasswordTextField(passwordController: _passwordController),
-                ],
-              ),
-              const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
-              FilledButton(
-                  onPressed: _signUp, child: const Text('Crear nueva cuenta')),
-              ElevatedButton(
-                  onPressed: () {
-                    showSnackBar(context, 'Estamos mostrando un mensaje');
-                  },
-                  child: const Text('SnackBar'))
-            ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const ImagenLogo(),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
+                Column(
+                  children: [
+                    const Text(
+                      'Registro',
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
+                    UsernameTextField(usernameController: _usernameController),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
+                    EmailTextField(emailController: _emailController),
+                    const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
+                    PasswordTextField(passwordController: _passwordController),
+                  ],
+                ),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
+                FilledButton(
+                    onPressed: _signUp, child: const Text('Crear nueva cuenta')),
+                ElevatedButton(
+                    onPressed: () {
+                      showSnackBar(context, 'Estamos mostrando un mensaje');
+                    },
+                    child: const Text('SnackBar'))
+              ],
+            ),
           ),
         ),
       ),
