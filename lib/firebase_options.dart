@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:newhiitgymfirebase2/configure/constants/environment.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,8 +50,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD4yFF7CNh-xPouXaAa44uDD9eVZmOQTfU',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: Environment.firebaseKey1,
     appId: '1:1050588380052:android:fddb1ea12d699a8f83ed81',
     messagingSenderId: '1050588380052',
     projectId: 'hiitgym-2ae99',
@@ -58,8 +59,8 @@ class DefaultFirebaseOptions {
     storageBucket: 'hiitgym-2ae99.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBHEIvhcwH016hP5fcyr917yoU62hifHVw',
+  static FirebaseOptions ios = FirebaseOptions(
+    apiKey: Environment.firebaseKey2,
     appId: '1:1050588380052:ios:16529bc85693ce4083ed81',
     messagingSenderId: '1050588380052',
     projectId: 'hiitgym-2ae99',

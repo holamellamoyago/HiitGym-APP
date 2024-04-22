@@ -20,10 +20,10 @@ export 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 // Screens
 
-export  'package:newhiitgymfirebase2/presentation/home_screen.dart';
-export 'package:newhiitgymfirebase2/presentation/login_screen.dart';
-export 'package:newhiitgymfirebase2/presentation/register_screen.dart';
-export 'package:newhiitgymfirebase2/presentation/tutorial_screen.dart';
+export  'package:newhiitgymfirebase2/presentation/screens/home_screen.dart';
+export 'package:newhiitgymfirebase2/presentation/screens/login_screen.dart';
+export 'package:newhiitgymfirebase2/presentation/screens/register_screen.dart';
+export 'package:newhiitgymfirebase2/presentation/screens/tutorial_screen.dart';
 export 'package:newhiitgymfirebase2/presentation/rutinas/the_5dias_screen.dart';
 
 

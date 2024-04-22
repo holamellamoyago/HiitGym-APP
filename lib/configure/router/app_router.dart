@@ -1,9 +1,11 @@
+import 'package:newhiitgymfirebase2/presentation/rutinas/the_3dias_screen.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
 final prefs = PreferenciasUsuario();
 
 final appRouter = GoRouter(
-  initialLocation: prefs.ultimaPagina,
+  // initialLocation: prefs.ultimaPagina,
+  initialLocation: '/login_screen',
   routes: [
     GoRoute(
         path: '/',
@@ -25,5 +27,9 @@ final appRouter = GoRouter(
         path: '/runtina_5dias_screen',
         name: Rutina5Dias.name,
         builder: (context, state) => const Rutina5Dias()),
+    GoRoute(
+        path: '/runtina_3dias_screen',
+        name: Rutina3dias.name,
+        builder: (context, state) => const Rutina3dias()),
   ],
 );

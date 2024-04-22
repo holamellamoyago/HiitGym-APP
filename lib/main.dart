@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:newhiitgymfirebase2/configure/preferences/pref_usuarios.dart';
 import 'package:newhiitgymfirebase2/configure/router/app_router.dart';
 import 'package:newhiitgymfirebase2/configure/theme/app_theme.dart';
@@ -7,9 +8,10 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await PreferenciasUsuario.init();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,  
   );
   runApp(const MainApp());
 }
