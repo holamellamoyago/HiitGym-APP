@@ -40,4 +40,12 @@ class PreferenciasUsuario {
   set isAdmin(bool value) {
     prefs.setBool('isAdmin', value);
   }
+
+  String get token {
+    return prefs.getString('token') ?? '';
+  }
+
+  set token(String value) {
+    prefs.setString('token', value);
+  }
 }

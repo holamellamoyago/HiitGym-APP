@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newhiitgymfirebase2/configure/firestore/firestore_service.dart';
-import 'package:newhiitgymfirebase2/configure/router/app_router.dart';
-import 'package:newhiitgymfirebase2/presentation/util/snackbar.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
+
 
 class Rutina5Dias extends StatefulWidget {
   static const name = '/runtina_5dias_screen';
@@ -149,8 +147,6 @@ class _Rutina5DiasState extends State<Rutina5Dias> {
   @override
   Widget build(BuildContext context) {
     final titleStyleLarge = Theme.of(context).textTheme.titleLarge;
-    final subtitleStyleSmall = Theme.of(context).textTheme.bodySmall;
-    final subtitleStyleMedium = Theme.of(context).textTheme.bodyMedium;
 
     final colors = Theme.of(context).colorScheme;
 

@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 import 'package:flutter/material.dart';
 
@@ -36,8 +35,7 @@ int selectedIndex = 0;
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    // final FirebaseauthService _auth = FirebaseauthService();
-    var prefs = PreferenciasUsuario();
+    _notifactions(context);
 
     return Scaffold(
       body: SafeArea(
@@ -75,6 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void _notifactions(BuildContext context) async {
+    context.read<NotificationsBloc>().requestPermission();
+    // final FirebaseauthService _auth = FirebaseauthService();
+    var prefs = PreferenciasUsuario();
+    print('Token: ${prefs.token}');
   }
 }
 
@@ -161,7 +166,6 @@ class HeaderHomeScreen extends StatelessWidget {
       ),
     ]);
   }
-
 }
 
 class _List extends StatelessWidget {

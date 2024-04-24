@@ -30,7 +30,7 @@ class CardHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Card.filled(
+        child: Card(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Padding(
