@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:newhiitgymfirebase2/presentation/util/snackbar.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
-
 class RegisterScreen extends StatefulWidget {
   static const name = 'register_screen';
   const RegisterScreen({super.key});
@@ -56,7 +55,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
                 FilledButton(
-                    onPressed: _signUp, child: const Text('Crear nueva cuenta')),
+                    onPressed: _signUp,
+                    child: const Text('Crear nueva cuenta')),
                 ElevatedButton(
                     onPressed: () {
                       showSnackBar(context, 'Estamos mostrando un mensaje');
@@ -71,25 +71,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   void _signUp() async {
+    // Preferencias de usuario
+    var prefs = PreferenciasUsuario();
+
+    // Notificaciones , firebase messasing
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    final token = await messaging.getToken();
+    print('El token del register es: ${token}');
+    // Username , mail ....
     String email = _emailController.text;
     String password = _passwordController.text;
     String username = _usernameController.text;
-    var prefs = PreferenciasUsuario();
 
     User? user = await _auth.createAcountWithEmailAndPassword(email, password);
 
     if (user != null) {
       print('El usuario inicio sesion correctamente');
-      context.push('/');
       prefs.ultimouid = user.uid;
       prefs.username = username;
       prefs.ultimaPagina = '/';
-      FirebaseFirestore.instance
-          .collection('User')
-          .doc(user.uid)
-          .set({'email': email, 'password': password, 'username': username});
+      FirebaseFirestore.instance.collection('User').doc(user.uid).set({
+        'email': email,
+        'password': password,
+        'username': username,
+        'subscription': 'Tarifa básica',
+        'admin': false,
+        'token': token ?? '123456789'
+      });
     } else {
-      print('No consiguio iniciar sesion');
+      print('No consiguio registrarse');
     }
+    context.push('/');
   }
 }
