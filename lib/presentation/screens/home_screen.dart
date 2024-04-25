@@ -59,9 +59,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(prefs.isAdmin.toString()),
                   GestureDetector(
                     onTap: () async {
+                      FirebaseMessaging messaging = FirebaseMessaging.instance;
                       FirebaseAuth.instance.signOut();
+                      User? user = FirebaseAuth.instance.currentUser;
+                      messaging.deleteToken();
                       context.go('/login_screen');
                       prefs.ultimaPagina = '/tutorial_screen';
+                      FirebaseFirestore.instance
+                          .collection('User')
+                          .doc(user?.uid)
+                          .update({
+                            'token': ''
+                          });
                     },
                     child: const Text('Desconectarse'),
                   ),

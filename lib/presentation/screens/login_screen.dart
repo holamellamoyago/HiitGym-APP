@@ -123,6 +123,8 @@ class _LoginPageState extends State<LoginPage> {
 
   void _sigIn() async {
     var prefs = PreferenciasUsuario();
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    final token = await messaging.getToken();
     String email = _emailController.text;
     String password = _passwordController.text;
 
@@ -132,6 +134,10 @@ class _LoginPageState extends State<LoginPage> {
       context.push('/');
       prefs.ultimaPagina = '/';
       prefs.ultimouid = user.uid;
+      FirebaseFirestore.instance
+          .collection('User')
+          .doc(user.uid)
+          .update({'token': token});
       showSnackBar(context, 'Inicio sesion correctamente');
     } else {
       showSnackBar(context, 'Error de contraseña o mail ');
@@ -141,6 +147,8 @@ class _LoginPageState extends State<LoginPage> {
   void _signInGoogle() async {
     var prefs = PreferenciasUsuario();
     User? user = FirebaseAuth.instance.currentUser;
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    final token = await messaging.getToken();
     final username = user?.displayName;
     final uid = user?.uid;
     const password = 'No hay contrrasna';
@@ -149,7 +157,6 @@ class _LoginPageState extends State<LoginPage> {
 
     if (user != null) {
       prefs.ultimouid = user.uid;
-      // prefs.username = username!;
       prefs.ultimaPagina = '/';
 
       FirebaseFirestore.instance.collection('User').doc(uid).set({
@@ -157,9 +164,12 @@ class _LoginPageState extends State<LoginPage> {
         'username': username,
         'password': password,
         'subscription': subscription,
-        'email': email
+        'email': email,
+        'token': token
       });
-    } else {}
-    context.go('/');
+      context.go('/');
+    } else {
+      showSnackBar(context, 'Error en el login_screen 172');
+    }
   }
 }
