@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
@@ -13,16 +15,22 @@ class _Rutina3diasState extends State<Rutina3dias> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Expanded(
-        child: FutureBuilder(
-          future: FirebaseFirestore.instance
-              .collection('Rutinas')
-              .doc('3Dias')
-              .get(),
-          builder: (context, snapshot) {
-            final rutinaData = snapshot.data?.data();
-            return !snapshot.hasData ? CircularProgressIndicator() : Center();
-          },
+      body: Center(
+        child: Expanded(
+          child: FutureBuilder(
+            future: FirebaseFirestore.instance
+                .collection('Rutinas')
+                .doc('3Dias')
+                .get(),
+            builder: (context, snapshot) {
+              final rutinaData = snapshot.data?.data();
+              return OutlinedButton(
+                  onPressed: () {
+                    LocalNotification.showLocalNotification(id: 1, title: 'Esto es una prueba', body: 'Esto es el body');
+                  },
+                  child: Text('Mostrar notificación'));
+            },
+          ),
         ),
       ),
     );

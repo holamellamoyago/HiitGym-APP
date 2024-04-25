@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
-
 class Rutina5Dias extends StatefulWidget {
   static const name = '/runtina_5dias_screen';
 
@@ -157,23 +156,31 @@ class _Rutina5DiasState extends State<Rutina5Dias> {
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Rutina de ',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
+                  IconButton(onPressed: () => context.push('/'), icon: Icon(Icons.arrow_back)),
+                  Container(
+                    child: Row(
+                      children: [
+                        Text(
+                          'Rutina de ',
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          '5 días',
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: colors.primary,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                    textAlign: TextAlign.center,
                   ),
-                  Text(
-                    '5 días',
-                    style: TextStyle(
-                        fontSize: 32,
-                        color: colors.primary,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  Image.asset('assets/logo.png', fit: BoxFit.cover,height: 50,)
                 ],
               ),
               const Text(
