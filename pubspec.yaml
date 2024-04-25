@@ -27,7 +27,7 @@ dependencies:
   google_sign_in: ^6.2.1
   page_view_indicators: ^2.0.0
   shared_preferences: ^2.2.2
-
+  
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:

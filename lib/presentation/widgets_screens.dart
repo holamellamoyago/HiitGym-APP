@@ -1,7 +1,6 @@
 
 
 // Bloc
-
 export 'package:bloc/bloc.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +26,6 @@ export 'package:firebase_messaging/firebase_messaging.dart';
 
 
 
-
 // Widgets
 export 'package:newhiitgymfirebase2/presentation/util/diferents.dart';
 export 'package:go_router/go_router.dart';
@@ -38,6 +36,10 @@ export 'package:newhiitgymfirebase2/presentation/util/TextField.dart';
 export 'package:flutter_card_swiper/flutter_card_swiper.dart';
 export 'package:flutter_dotenv/flutter_dotenv.dart';
 export 'package:newhiitgymfirebase2/configure/localNotification/local_notification.dart';
+export 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
+export 'package:flutter/gestures.dart';
+
+
 
 
 
@@ -49,6 +51,8 @@ export 'package:newhiitgymfirebase2/presentation/screens/login_screen.dart';
 export 'package:newhiitgymfirebase2/presentation/screens/register_screen.dart';
 export 'package:newhiitgymfirebase2/presentation/screens/tutorial_screen.dart';
 export 'package:newhiitgymfirebase2/presentation/rutinas/the_5dias_screen.dart';
+export 'package:newhiitgymfirebase2/presentation/screens/profile_screen.dart';
+
 
 
 
