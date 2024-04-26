@@ -167,7 +167,6 @@ class _LoginPageState extends State<LoginPage> {
         'email': email,
         'token': token
       });
-      context.go('/');
     } else {
       showSnackBar(context, 'Error en el login_screen 172');
     }

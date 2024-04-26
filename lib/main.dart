@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newhiitgymfirebase2/configure/localNotification/local_notification.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
 void main() async {

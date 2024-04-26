@@ -45,5 +45,17 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+  	<key>com.apple.security.files.user-selected.read-only</key>
+  	<true/>
+  	<key>NSPhotoLibraryUsageDescription</key>
+  	<true/>
+  	<key>NSCameraUsageDescription</key>
+  	<true/>
+  	<key>NSMicrophoneUsageDescription</key>
+  	<true/>
+
+  	<!-- <key></key>
+  	<true/> -->
+
 </dict>
 </plist>

@@ -1,6 +1,7 @@
 
 
 // Bloc
+
 export 'package:bloc/bloc.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,7 @@ export 'package:newhiitgymfirebase2/configure/firestore/firestore_service.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
 
 
+export 'dart:math';
 
 
 
@@ -38,6 +40,10 @@ export 'package:flutter_dotenv/flutter_dotenv.dart';
 export 'package:newhiitgymfirebase2/configure/localNotification/local_notification.dart';
 export 'package:flutter_floating_bottom_bar/flutter_floating_bottom_bar.dart';
 export 'package:flutter/gestures.dart';
+
+export 'package:image_picker/image_picker.dart';
+
+
 
 
 

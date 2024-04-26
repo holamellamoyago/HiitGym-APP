@@ -16,17 +16,7 @@ List<IconData> navIcons2 = [
   Icons.person_2_outlined
 ];
 
-List<GestureDetector> navIcons = [
-  GestureDetector(
-    child: const Icon(Icons.home_outlined),
-  ),
-  GestureDetector(
-    child: const Icon(Icons.camera_alt_outlined),
-  ),
-  GestureDetector(
-    child: const Icon(Icons.person_2_outlined),
-  ),
-];
+
 
 List<String> navTitle = ['Home', 'TikGym', 'Perfil'];
 
