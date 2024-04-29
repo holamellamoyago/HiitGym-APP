@@ -1,6 +1,5 @@
 import 'package:newhiitgymfirebase2/presentation/dashboard/dashboard.dart';
 import 'package:newhiitgymfirebase2/presentation/rutinas/the_3dias_screen.dart';
-import 'package:newhiitgymfirebase2/presentation/screens/profile_screen.dart';
 import 'package:newhiitgymfirebase2/presentation/widgets_screens.dart';
 
 final prefs = PreferenciasUsuario();
@@ -39,7 +38,7 @@ final appRouter = GoRouter(
         builder: (context, state) => const ProfileScreen()),
     GoRoute(
         path: '/dashboard',
-        name: DashBoard.routename,
-        builder: (context, state) => const DashBoard()),
+        name: DashboardScreen.name,
+        builder: (context, state) =>  DashboardScreen(title: 'hola')),
   ],
 );
